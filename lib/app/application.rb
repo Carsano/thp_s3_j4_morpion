@@ -8,17 +8,17 @@ class Application
   end
 
   def welcome
-      system "clear"
-      puts "#"*50
-      puts "#" + "MORPION QUI DECHIRE".center(48) + "#"
-      puts "#"*50
-      5.times do
-        puts ""
-      end 
-      puts "Bienvenu dans ce jeu de morpion designé par votre serviteur Carsano"
-      puts "Que dit Wikipédia : "
-      puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)"
-      @prompt.keypress("Appuie sur une touche pour continuer")
+    system "clear"
+    puts "#"*50
+    puts "#" + "MORPION QUI DECHIRE".center(48) + "#"
+    puts "#"*50
+    5.times do
+      puts ""
+    end 
+    puts "Bienvenu dans ce jeu de morpion designé par votre serviteur Carsano"
+    puts "Que dit Wikipédia : "
+    puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)"
+    @prompt.keypress("Appuie sur une touche pour continuer")
 
   end
 
@@ -47,15 +47,23 @@ class Application
     # Ici on joue une partie entière
     @game = Game.new(@joueur1, @joueur2)
     end_game = @game.verify_endgame
+    show_table
     until end_game
       system "clear"
-      show = Show.new(@game.board)
-      puts show.table_round
+      show_table
       puts "#{@game.active_player.name} (#{@game.active_player.symbol}), à vous de jouer" 
       @game.place_value
       end_game = @game.verify_endgame 
     end
+    system "clear"
+    show_table
     end_of_the_game
+  end
+
+  def show_table
+    show = Show.new(@game.board)
+    puts show.table_round
+
   end
 
   def end_of_the_game
