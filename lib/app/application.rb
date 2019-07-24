@@ -30,13 +30,12 @@ class Application
 
   def play_part
     # Ici on joue une partie entière
-      @game = Game.new(@joueur1, @joueur2)
-      end_game = @game.verify_endgame
-      binding.pry
-      unless end_game
-        
-        end_game = @game.verify_endgame 
-      end
+    @game = Game.new(@joueur1, @joueur2)
+    end_game = @game.verify_endgame
+    # until end_game
+
+    #   end_game = @game.verify_endgame 
+    # end
   end
 
   def ask_replay
@@ -44,11 +43,11 @@ class Application
     # Renvoie true si rejoue, false sinon
     @prompt.select("Voulez-vous rejouer?", %w(Oui Non), cycle: true) == "Oui" ? true : false
 
-   # choice = @prompt.yes?("Voulez-vous rejouer?") do |q|
-   #    q.positive 'Yup'
-   #    q.negative 'Nope'
-   #    q.default false
-   #  end
+    # choice = @prompt.yes?("Voulez-vous rejouer?") do |q|
+    #    q.positive 'Yup'
+    #    q.negative 'Nope'
+    #    q.default false
+    #  end
 
   end
 end
