@@ -18,14 +18,19 @@ class Application
     @board = Board.new
   end
 
-  def play
+  def play_game
     # On joue à l'infini
     replay = ask_replay
     while replay
-
+      play_part
       replay = ask_replay
     end
 
+  end
+
+  def play_part
+    # Ici on joue une partie entière
+      game = Game.new
   end
 
   def ask_replay

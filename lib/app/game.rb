@@ -2,6 +2,7 @@ class Game
 
   def initialize
     # initialize une nouvelle partie
+    
   end
 
   def verify_endgame
