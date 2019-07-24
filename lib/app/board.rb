@@ -15,6 +15,7 @@ class Board
     @cases = [a1, a2, a3, b1, b2, b3, c1, c2, c3]
     @nb_coups_joues = 0
     @aborted = false
+    @hash_colorize = {"l1" => false, "l2" => false, "l3" => false, "c1" => false, "c2" => false, "c3" => false,"d1" => false, "d2" => false }
   end
 
   def change_value_case(bcase, value)
@@ -44,6 +45,7 @@ class Board
   def verif_lines
     # verif lignes
     if @cases[0].content != " " and [@cases[0].content, @cases[1].content, @cases[2].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
+
       return true
     elsif @cases[3].content != " " and [@cases[3].content, @cases[4].content, @cases[5].content] == [@cases[3].content, @cases[3].content, @cases[3].content]
       return true
