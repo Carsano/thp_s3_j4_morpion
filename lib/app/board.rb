@@ -18,7 +18,7 @@ class Board
 
   def change_value_case(bcase, value)
     @cases.keys[bcase].change_content(value)
-    @case.values[bcase] = value
+    @cases.values[bcase] = value
     add_coup
   end
 
