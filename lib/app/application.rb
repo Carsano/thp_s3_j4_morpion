@@ -33,6 +33,7 @@ class Application
     @game = Game.new(@joueur1, @joueur2)
     end_game = @game.verify_endgame
     until end_game
+      system "clear"
       show = Show.new(@game.board)
       puts show.table_round
       puts "#{@game.active_player.name}, à vous de jouer" 
