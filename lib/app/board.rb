@@ -18,6 +18,11 @@ class Board
 
   def change_value_case(bcase, value)
     @cases[bcase]=value
+    add_coup
+  end
+
+  def add_coup
+    @nb_coups_joues += 1
   end
 
   def verif_alignement_points
