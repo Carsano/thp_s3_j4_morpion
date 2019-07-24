@@ -40,6 +40,12 @@ class Application
       @game.place_value
       end_game = @game.verify_endgame 
     end
+    if @game.board.nb_coups_joues == 9
+      puts "match nul"
+    else
+      @game.change_active_player
+      puts "#{@game.active_player.name} remporte la partie"
+    end
   end
 
   def ask_replay
