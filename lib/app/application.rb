@@ -6,6 +6,20 @@ class Application
     @prompt = TTY::Prompt.new
   end
 
+  def welcome
+      system "clear"
+      puts "#"*50
+      puts "#" + "MORPION QUI DECHIRE".center(48) + "#"
+      puts "#"*50
+      5.times do
+        puts ""
+      end 
+      puts "Bienvenu dans ce jeu de morpion designé par votre serviteur Carsano"
+      puts "Que dit Wikipédia : "
+      puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)"
+
+  end
+
   def ask_name
     puts 'Veuillez rentrer le nom du joueur1'
     name1 = gets.chomp
