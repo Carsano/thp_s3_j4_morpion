@@ -1,5 +1,6 @@
 class Application
 
+  attr_accessor :game
   def initialize
     ask_name
     @prompt = TTY::Prompt.new
