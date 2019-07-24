@@ -1,8 +1,8 @@
 class Game
 
-  def initialize
+  def initialize(j1,j2)
     # initialize une nouvelle partie
-    @board = Board.new(j1,j2)
+    @board = Board.new
     @cases_availables = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
     @prompt = TTY::Prompt.new
     @j1 = j1

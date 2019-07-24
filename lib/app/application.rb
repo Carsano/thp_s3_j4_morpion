@@ -3,6 +3,7 @@ class Application
   def initialize
     ask_name
     @prompt = TTY::Prompt.new
+    play_part
 
 
   end
@@ -12,12 +13,8 @@ class Application
     name1 = gets.chomp
     @joueur1 = Player.new(name1,"x")
     puts 'Veuillez rentrer le nom du joueur2'
-    name2 = get.chomp
+    name2 = gets.chomp
     @joueur2 = Player.new(name2, "o")
-  end
-
-  def new_board
-    @board = Board.new
   end
 
   def play_game
@@ -32,7 +29,7 @@ class Application
 
   def play_part
     # Ici on joue une partie entière
-      game = Game.new(@joueur1, @joueur2)
+      @game = Game.new(@joueur1, @joueur2)
   end
 
   def ask_replay
