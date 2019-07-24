@@ -43,7 +43,7 @@ class Application
       system "clear"
       play_game
       while @retour_menu 
-      menu
+        menu
       end
     end
     puts "Ciao !"

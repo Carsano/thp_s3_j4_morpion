@@ -1,4 +1,6 @@
 require 'bundler'
+require 'colorize'
+require 'colorized_string'
 Bundler.require
 
 $:.unshift File.expand_path("./../lib", __FILE__)

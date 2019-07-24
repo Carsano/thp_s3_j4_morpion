@@ -10,4 +10,8 @@ class BoardCase
   def change_content(value)
     @content = value
   end
+
+  def change_color
+    @content = @content.colorize(:green)
+  end
 end

@@ -47,8 +47,8 @@ class Game
   def change_active_player
     if @active_player == @j1
       @active_player = @j2
-      else
-        @active_player = @j1
+    else
+      @active_player = @j1
     end
   end
 end
