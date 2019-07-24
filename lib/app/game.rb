@@ -19,11 +19,21 @@ class Game
 
   def place_value
     choice = @prompt.select("Choose your destiny?", @cases_availables) 
+    @cases_availables.delete(choice)
+    transform_choice(choice)
   end
 
   def transform_choice(choice)
     case choice
-    when ""
+    when "A1" then return 0
+    when "A2" then return 1
+    when "A3" then return 2
+    when "B1" then return 3
+    when "B2" then return 4
+    when "B3" then return 5
+    when "C1" then return 6
+    when "C2" then return 7
+    when "C3" then return 8
     end
   end
 end
