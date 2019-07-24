@@ -15,7 +15,6 @@ class Board
     @cases = [a1, a2, a3, b1, b2, b3, c1, c2, c3]
     @nb_coups_joues = 0
     @aborted = false
-    @hash_colorize = {"l1" => false, "l2" => false, "l3" => false, "c1" => false, "c2" => false, "c3" => false,"d1" => false, "d2" => false }
   end
 
   def change_value_case(bcase, value)
@@ -45,15 +44,12 @@ class Board
   def verif_lines
     # verif lignes
     if @cases[0].content != " " and [@cases[0].content, @cases[1].content, @cases[2].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
-      @hash_colorize["l1"] = true
       colorize_win(@cases[0], @cases[1], @cases[2])
       return true
     elsif @cases[3].content != " " and [@cases[3].content, @cases[4].content, @cases[5].content] == [@cases[3].content, @cases[3].content, @cases[3].content]
-      @hash_colorize["l2"] = true
       colorize_win(@cases[3], @cases[4], @cases[5])
       return true
     elsif @cases[6].content != " " and [@cases[6].content, @cases[7].content, @cases[8].content] == [@cases[6].content, @cases[6].content, @cases[6].content]
-      @hash_colorize["l3"] = true
       colorize_win(@cases[6], @cases[7], @cases[8])
       return true
     else
@@ -64,15 +60,11 @@ class Board
   def verif_columns
     if @cases[0].content != " " and [@cases[0].content, @cases[3].content, @cases[6].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
       @hash_colorize["c1"] = true
-      colorize_win(@cases[0], @cases[3], @cases[6])
-
       return true
     elsif @cases[1].content != " " and [@cases[1].content, @cases[4].content, @cases[7].content] == [@cases[1].content, @cases[1].content, @cases[1].content]
       @hash_colorize["c2"] = true
-      colorize_win(@cases[1], @cases[4], @cases[7])
       return true
     elsif @cases[2].content != " " and [@cases[2].content, @cases[5].content, @cases[8].content] == [@cases[2].content, @cases[2].content, @cases[2].content]
-      @hash_colorize["c3"] = true
       colorize_win(@cases[2], @cases[5], @cases[8])
       return true
     else
@@ -83,11 +75,9 @@ class Board
 
   def verif_diagos
     if @cases[0].content != " " and [@cases[0].content, @cases[4].content, @cases[8].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
-      @hash_colorize["d1"] = true
       colorize_win(@cases[0], @cases[4], @cases[8])
       return true
     elsif @cases[2].content != " " and [@cases[2].content, @cases[4].content, @cases[6].content] == [@cases[2].content, @cases[2].content, @cases[2].content]
-      @hash_colorize["d2"] = true
       colorize_win(@cases[2], @cases[4], @cases[6])
       return true
     else
