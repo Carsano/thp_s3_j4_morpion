@@ -36,7 +36,7 @@ class Application
       system "clear"
       show = Show.new(@game.board)
       puts show.table_round
-      puts "#{@game.active_player.name}, à vous de jouer" 
+      puts "#{@game.active_player.name} (#{@game.active_player.symbol}), à vous de jouer" 
       @game.place_value
       end_game = @game.verify_endgame 
     end
