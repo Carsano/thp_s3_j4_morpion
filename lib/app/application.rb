@@ -24,10 +24,10 @@ class Application
 
   def ask_name
     puts '-'*50
-    print 'Veuillez rentrer le nom du joueur1\n> '
+    print "Veuillez rentrer le nom du joueur1\n> "
     name1 = gets.chomp
     @joueur1 = Player.new(name1,"x")
-    print 'Veuillez rentrer le nom du joueur2\n> '
+    print "Veuillez rentrer le nom du joueur2\n> "
     name2 = gets.chomp
     @joueur2 = Player.new(name2, "o")
   end
