@@ -2,7 +2,7 @@ class Game
 
   def initialize
     # initialize une nouvelle partie
-    
+    @board = Board.new
   end
 
   def verify_endgame
