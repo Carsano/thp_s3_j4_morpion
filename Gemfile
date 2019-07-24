@@ -4,4 +4,4 @@ gem 'pry'
 gem 'rspec'
 gem 'dotenv' 
 gem 'tty-prompt'
-
+gem 'terminal-table'
