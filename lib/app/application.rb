@@ -15,4 +15,15 @@ class Application
   def new_board
     @board = Board.new
   end
+
+  def play
+    # On joue à l'infini
+
+  end
+
+  def ask_replay
+    # Ici on demande à rejouer
+    # Renvoie true si rejoue, false sinon
+
+  end
 end
