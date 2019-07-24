@@ -11,10 +11,12 @@ class Show
 
   def show_board
     rows_morp = [
-      ["A", @game.board.cases[0].content, @game.board.cases[1].content, @game.board.cases[2].content],
-      ["B", @game.board.cases[3].content, @game.board.cases[4].content, @game.board.cases[5].content],
-      ["C", @game.board.cases[6].content, @game.board.cases[7].content, @game.board.cases[8].content] ]
-    @table_morp = Terminal::Table.new :headings => ['','1','2','3'],:rows => rows_morp
+      ["A".colorize(:light_red), @game.board.cases[0].content, @game.board.cases[1].content, @game.board.cases[2].content],
+      ["B".colorize(:light_red), @game.board.cases[3].content, @game.board.cases[4].content, @game.board.cases[5].content],
+      ["C".colorize(:light_red), @game.board.cases[6].content, @game.board.cases[7].content, @game.board.cases[8].content] ]
+    @table_morp = Terminal::Table.new :headings => ['','1'.colorize(:light_red),'2'.colorize(:light_red),'3'.colorize(:light_red)],:rows => rows_morp
+    @table_morp.style = {:border_x => "-".colorize(:white),:border_y => "|".colorize(:white),:border_i => "+".colorize(:white), :all_separators => true}
+    @table_morp
   end
 
   def show_stats_players

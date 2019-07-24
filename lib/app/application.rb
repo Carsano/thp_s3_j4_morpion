@@ -29,10 +29,10 @@ class Application
     puts '-'*50
     print "Veuillez rentrer le nom du joueur1\n> "
     name1 = gets.chomp.colorize(:blue)
-    @joueur1 = Player.new(name1,"x")
+    @joueur1 = Player.new(name1,"x".colorize(:blue))
     print "Veuillez rentrer le nom du joueur2\n> "
     name2 = gets.chomp.colorize(:red)
-    @joueur2 = Player.new(name2, "o")
+    @joueur2 = Player.new(name2, "o".colorize(:red))
   end
 
   def play_app
