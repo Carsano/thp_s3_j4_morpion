@@ -64,7 +64,7 @@ class Application
 
   def show_table
     show = Show.new(@game.board)
-    puts show.table_morp
+    puts show.show_board
 
   end
 
@@ -87,6 +87,10 @@ class Application
 
   def ask_replay
     @prompt.select("Voulez-vous rejouer?", %w(Oui Non), cycle: true) == "Oui" ? @replay = true : @replay = false
+  end
+
+  def shows_statistics
+    
   end
 
   def menu
