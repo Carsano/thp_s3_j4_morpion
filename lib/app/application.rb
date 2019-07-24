@@ -90,13 +90,14 @@ class Application
   end
 
   def shows_statistics
-    
+    show = Show.new(@game)
+    puts show.show_stats_players
   end
 
   def menu
     choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Quitter"], cycle: true)
     case choice
-    when "Voir les stats" then
+    when "Voir les stats" then shows_statistics
     when "Quitter" then @replay = false
     else
     end
