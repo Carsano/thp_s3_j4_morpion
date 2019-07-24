@@ -1,5 +1,6 @@
 class BoardCase
 
+  attr_reader :content
   def initialize(position)
     # Ici on initialise une case du plateau
     @position = position

@@ -12,13 +12,12 @@ class Board
     c1=BoardCase.new(7) 
     c2=BoardCase.new(8) 
     c3=BoardCase.new(9)  
-    @cases = {a1 => "", a2 => "",a3 => "", b1 => "",b2 => "", b3 => "",c1 => "", c2 => "",c3=> "" }
+    @cases = [a1, a2,a3, b1,b2, b3,c1 , c2,c3]
     @nb_coups_joues = 0
   end
 
   def change_value_case(bcase, value)
-    @cases.keys[bcase].change_content(value)
-    @cases.values[bcase] = value
+    @cases[bcase].change_content(value)
     add_coup
   end
 
@@ -35,11 +34,11 @@ class Board
   end
   def verif_lines
     # verif lignes
-    if @cases.values[0] != "" and [@cases.values[0], @cases.values[1], @cases.values[2]] == [@cases.values[0], @cases.values[0], @cases.values[0]]
+    if @cases[0].content != "" and [@cases[0].content, @cases[1].content, @cases[2].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
       return true
-    elsif @cases.values[3] != "" and [@cases.values[3], @cases.values[4], @cases.values[5]] == [@cases.values[3], @cases.values[3], @cases.values[3]]
+    elsif @cases[3].content != "" and [@cases[3].content, @cases[4].content, @cases[5].content] == [@cases[3].content, @cases[3].content, @cases[3].content]
       return true
-    elsif @cases.values[6] != "" and [@cases.values[6], @cases.values[7], @cases.values[8]] == [@cases.values[6], @cases.values[6], @cases.values[6]]
+    elsif @cases[6].content != "" and [@cases[6].content, @cases[7].content, @cases[8].content] == [@cases[6].content, @cases[6].content, @cases[6].content]
       return true
     else
       return false 
@@ -47,11 +46,11 @@ class Board
   end
 
   def verif_columns
-    if @cases.values[0] != "" and [@cases.values[0], @cases.values[3], @cases.values[6]] == [@cases.values[0], @cases.values[0], @cases.values[0]]
+    if @cases[0].content != "" and [@cases[0].content, @cases[3].content, @cases[6].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
       return true
-    elsif @cases.values[1] != "" and [@cases.values[1], @cases.values[4], @cases.values[7]] == [@cases.values[1], @cases.values[1], @cases.values[1]]
+    elsif @cases[1].content != "" and [@cases[1].content, @cases[4].content, @cases[7].content] == [@cases[1].content, @cases[1].content, @cases[1].content]
       return true
-    elsif @cases.values[2] != "" and [@cases.values[2], @cases.values[5], @cases.values[8]] == [@cases.values[2], @cases.values[2], @cases.values[2]]
+    elsif @cases[2].content != "" and [@cases[2].content, @cases[5].content, @cases[8].content] == [@cases[2].content, @cases[2].content, @cases[2].content]
       return true
     else
       return false 
@@ -60,34 +59,12 @@ class Board
   end
 
   def verif_diagos
-    if @cases.values[0] != "" and [@cases.values[0], @cases.values[4], @cases.values[8]] == [@cases.values[0], @cases.values[0], @cases.values[0]]
+    if @cases[0].content != "" and [@cases[0].content, @cases[4].content, @cases[8].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
       return true
-    elsif @cases.values[2] != "" and [@cases.values[2], @cases.values[4], @cases.values[6]] == [@cases.values[2], @cases.values[2], @cases.values[2]]
+    elsif @cases[2].content != "" and [@cases[2].content, @cases[4].content, @cases[6].content] == [@cases[2].content, @cases[2].content, @cases[2].content]
       return true
     else
       return false 
     end
   end
-
-
-
-
-
-
-
-
-
-
-
-  # if (@cases[a1]==@cases[a2] and @cases[a1] = @cases[a3] and @cases[a1] != "") or (@cases[b1]==@cases[b2] and @cases[b1] = @cases[b3] and @cases[b1] != "") and (@cases[c1]==@cases[c2] and @cases[c1] = @cases[c3] and @cases[c1] != "")
-  #   return true
-  #   # verif colonnes
-  # elsif (@cases[a1]==@cases[b1] and @cases[a1] = @cases[c1] and @cases[a1] != "") or (@cases[a2]==@cases[b2] and @cases[a2] = @cases[c2] and @cases[a2] != "") and (@cases[a3]==@cases[b3] and @cases[a3] = @cases[c3] and @cases[a3] != "")
-  #   return true
-  #   # verif diago
-  # elsif (@cases[a1]==@cases[b2] and @cases[a1] = @cases[c3] and @cases[a1] != "") or (@cases[a3]==@cases[b2] and @cases[a3] = @cases[c1] and @cases[a3] != "")
-  #   return true
-  # else
-  #   return false
-  # end
 end

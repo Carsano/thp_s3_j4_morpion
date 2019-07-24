@@ -4,7 +4,7 @@ class Application
   def initialize
     ask_name
     @prompt = TTY::Prompt.new
-    play_part
+    play_game
 
 
   end
@@ -20,7 +20,7 @@ class Application
 
   def play_app
     # On joue à l'infini
-    replay = ask_replay
+    replay = true
     while replay
       play_game
       replay = ask_replay
@@ -33,7 +33,9 @@ class Application
     @game = Game.new(@joueur1, @joueur2)
     end_game = @game.verify_endgame
     until end_game
-      puts "#{@game.active_player}, à vous de jouer" 
+      show = Show.new(@game.board)
+      puts show.table_round
+      puts "#{@game.active_player.name}, à vous de jouer" 
       @game.place_value
       end_game = @game.verify_endgame 
     end
