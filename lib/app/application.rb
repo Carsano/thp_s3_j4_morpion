@@ -2,8 +2,9 @@ class Application
 
   attr_reader :game
   def initialize
-    ask_name
     @prompt = TTY::Prompt.new
+    welcome
+    ask_name
   end
 
   def welcome
@@ -17,14 +18,16 @@ class Application
       puts "Bienvenu dans ce jeu de morpion designé par votre serviteur Carsano"
       puts "Que dit Wikipédia : "
       puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)"
+      @prompt.keypress("Appuie sur une touche pour continuer")
 
   end
 
   def ask_name
-    puts 'Veuillez rentrer le nom du joueur1'
+    puts '-'*50
+    print 'Veuillez rentrer le nom du joueur1\n> '
     name1 = gets.chomp
     @joueur1 = Player.new(name1,"x")
-    puts 'Veuillez rentrer le nom du joueur2'
+    print 'Veuillez rentrer le nom du joueur2\n> '
     name2 = gets.chomp
     @joueur2 = Player.new(name2, "o")
   end

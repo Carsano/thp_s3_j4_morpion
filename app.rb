@@ -10,5 +10,4 @@ require 'app/application'
 require 'views/show'
 
 app = Application.new
-app.welcome
 app.play_app
