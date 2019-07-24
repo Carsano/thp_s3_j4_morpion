@@ -22,6 +22,7 @@ class Board
 
   def verif_alignement_points
     verif_lines
+    verif_columns
   end
 
   def verif_lines
@@ -33,11 +34,20 @@ class Board
     elsif @cases.values[6] != "" and [@cases.values[6], @cases.values[7], @cases.values[8]] == [@cases.values[6], @cases.values[6], @cases.values[6]]
       return true
     else
-     return false 
+      return false 
     end
   end
 
   def verif_columns
+    if @cases.values[0] != "" and [@cases.values[0], @cases.values[3], @cases.values[6]] == [@cases.values[0], @cases.values[0], @cases.values[0]]
+      return true
+    elsif @cases.values[1] != "" and [@cases.values[1], @cases.values[4], @cases.values[7]] == [@cases.values[1], @cases.values[1], @cases.values[1]]
+      return true
+    elsif @cases.values[2] != "" and [@cases.values[2], @cases.values[5], @cases.values[8]] == [@cases.values[2], @cases.values[2], @cases.values[2]]
+      return true
+    else
+      return false 
+    end
 
   end
 
@@ -55,15 +65,15 @@ class Board
 
 
 
-    # if (@cases[a1]==@cases[a2] and @cases[a1] = @cases[a3] and @cases[a1] != "") or (@cases[b1]==@cases[b2] and @cases[b1] = @cases[b3] and @cases[b1] != "") and (@cases[c1]==@cases[c2] and @cases[c1] = @cases[c3] and @cases[c1] != "")
-    #   return true
-    #   # verif colonnes
-    # elsif (@cases[a1]==@cases[b1] and @cases[a1] = @cases[c1] and @cases[a1] != "") or (@cases[a2]==@cases[b2] and @cases[a2] = @cases[c2] and @cases[a2] != "") and (@cases[a3]==@cases[b3] and @cases[a3] = @cases[c3] and @cases[a3] != "")
-    #   return true
-    #   # verif diago
-    # elsif (@cases[a1]==@cases[b2] and @cases[a1] = @cases[c3] and @cases[a1] != "") or (@cases[a3]==@cases[b2] and @cases[a3] = @cases[c1] and @cases[a3] != "")
-    #   return true
-    # else
-    #   return false
-    # end
+  # if (@cases[a1]==@cases[a2] and @cases[a1] = @cases[a3] and @cases[a1] != "") or (@cases[b1]==@cases[b2] and @cases[b1] = @cases[b3] and @cases[b1] != "") and (@cases[c1]==@cases[c2] and @cases[c1] = @cases[c3] and @cases[c1] != "")
+  #   return true
+  #   # verif colonnes
+  # elsif (@cases[a1]==@cases[b1] and @cases[a1] = @cases[c1] and @cases[a1] != "") or (@cases[a2]==@cases[b2] and @cases[a2] = @cases[c2] and @cases[a2] != "") and (@cases[a3]==@cases[b3] and @cases[a3] = @cases[c3] and @cases[a3] != "")
+  #   return true
+  #   # verif diago
+  # elsif (@cases[a1]==@cases[b2] and @cases[a1] = @cases[c3] and @cases[a1] != "") or (@cases[a3]==@cases[b2] and @cases[a3] = @cases[c1] and @cases[a3] != "")
+  #   return true
+  # else
+  #   return false
+  # end
 end
