@@ -12,9 +12,9 @@ class Application
 
   def welcome
     system "clear"
-    puts "#"*50
-    puts "#" + "MORPION QUI DECHIRE".center(48) + "#"
-    puts "#"*50
+    puts ("#"*50).colorize(:blue)
+    puts ("#" + "MORPION QUI DECHIRE".center(48) + "#").colorize(:blue)
+    puts ("#"*50).colorize(:blue)
     5.times do
       puts ""
     end 
@@ -28,10 +28,10 @@ class Application
   def ask_name
     puts '-'*50
     print "Veuillez rentrer le nom du joueur1\n> "
-    name1 = gets.chomp
+    name1 = gets.chomp.colorize(:blue)
     @joueur1 = Player.new(name1,"x")
     print "Veuillez rentrer le nom du joueur2\n> "
-    name2 = gets.chomp
+    name2 = gets.chomp.colorize(:red)
     @joueur2 = Player.new(name2, "o")
   end
 
