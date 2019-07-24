@@ -1,6 +1,6 @@
 class Application
 
-  attr_accessor :game
+  attr_reader :game
   def initialize
     ask_name
     @prompt = TTY::Prompt.new
@@ -18,17 +18,17 @@ class Application
     @joueur2 = Player.new(name2, "o")
   end
 
-  def play_game
+  def play_app
     # On joue à l'infini
     replay = ask_replay
     while replay
-      play_part
+      play_game
       replay = ask_replay
     end
 
   end
 
-  def play_part
+  def play_game
     # Ici on joue une partie entière
     @game = Game.new(@joueur1, @joueur2)
     end_game = @game.verify_endgame

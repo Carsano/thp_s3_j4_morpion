@@ -1,6 +1,6 @@
 class Game
 
-  attr_accessor :board
+  attr_reader :board, :active_player
   def initialize(j1,j2)
     # initialize une nouvelle partie
     @board = Board.new
