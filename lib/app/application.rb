@@ -2,6 +2,8 @@ class Application
 
   def initialize
     ask_name
+    @prompt = TTY::Prompt.new
+
 
   end
 
@@ -18,12 +20,24 @@ class Application
 
   def play
     # On joue à l'infini
+    replay = ask_replay
+    while replay
+
+      replay = ask_replay
+    end
 
   end
 
   def ask_replay
     # Ici on demande à rejouer
     # Renvoie true si rejoue, false sinon
+    @prompt.select("Voulez-vous rejouer?", %w(Oui Non), cycle: true) == "Oui" ? true : false
+
+   # choice = @prompt.yes?("Voulez-vous rejouer?") do |q|
+   #    q.positive 'Yup'
+   #    q.negative 'Nope'
+   #    q.default false
+   #  end
 
   end
 end

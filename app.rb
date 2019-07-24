@@ -8,3 +8,5 @@ require 'app/player'
 require 'app/boardcase'
 require 'app/application'
 require 'views/show'
+
+binding.pry
