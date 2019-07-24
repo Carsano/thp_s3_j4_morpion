@@ -22,7 +22,7 @@ class Game
   end
 
   def place_value
-    choice = @prompt.select("Placez votre pion", @cases_availables, cycle: true) 
+    choice = @prompt.select("#{@active_player.name} (#{@active_player.symbol}), à vous de jouer : ", @cases_availables, cycle: true) 
     @cases_availables.delete(choice)
     @board.change_value_case(transform_choice(choice), @active_player.symbol)
     change_active_player

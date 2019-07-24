@@ -3,8 +3,10 @@ class Application
   attr_reader :game
   def initialize
     @prompt = TTY::Prompt.new
+    @replay = true
     welcome
     ask_name
+
   end
 
   def welcome
@@ -34,11 +36,11 @@ class Application
 
   def play_app
     # On joue à l'infini
-    replay = true
-    while replay
+    @replay = true
+    while @replay
       system "clear"
       play_game
-      replay = ask_replay
+      menu
     end
     puts "Ciao !"
 
@@ -52,7 +54,6 @@ class Application
     until end_game
       system "clear"
       show_table
-      puts "#{@game.active_player.name} (#{@game.active_player.symbol}), à vous de jouer" 
       @game.place_value
       end_game = @game.verify_endgame 
     end
@@ -85,15 +86,15 @@ class Application
   end
 
   def ask_replay
-    # Ici on demande à rejouer
-    # Renvoie true si rejoue, false sinon
-    @prompt.select("Voulez-vous rejouer?", %w(Oui Non), cycle: true) == "Oui" ? true : false
+    @prompt.select("Voulez-vous rejouer?", %w(Oui Non), cycle: true) == "Oui" ? @replay = true : @replay = false
+  end
 
-    # choice = @prompt.yes?("Voulez-vous rejouer?") do |q|
-    #    q.positive 'Yup'
-    #    q.negative 'Nope'
-    #    q.default false
-    #  end
-
+  def menu
+    choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Quitter"], cycle: true)
+    case choice
+    when "Voir les stats" then
+    when "Quitter" then @replay = false
+    else
+    end
   end
 end
