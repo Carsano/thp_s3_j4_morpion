@@ -30,7 +30,7 @@ class Player
   end
 
   def show_states 
-    states = {
+    {
       "First name" => @name,
       "Number of game played" => @nb_plays,
       "Wins" => @nb_win,

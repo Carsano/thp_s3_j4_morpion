@@ -63,7 +63,7 @@ class Application
 
   def show_table
     show = Show.new(@game.board)
-    puts show.table_round
+    puts show.table_morp
 
   end
 

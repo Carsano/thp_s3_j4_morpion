@@ -27,6 +27,7 @@ class Board
   end
   
   def ending_play
+    @nb_coups_joues = 9
     @aborted = true
   end
   def add_coup
