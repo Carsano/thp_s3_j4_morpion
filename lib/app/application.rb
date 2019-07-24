@@ -9,9 +9,11 @@ class Application
 
   def ask_name
     puts 'Veuillez rentrer le nom du joueur1'
-    @joueur1 = gets.chomp
+    name1 = gets.chomp
+    @joueur1 = Player.new(name1,"x")
     puts 'Veuillez rentrer le nom du joueur2'
-    @joueur2 = gets.chomp
+    name2 = get.chomp
+    @joueur2 = Player.new(name2, "o")
   end
 
   def new_board
@@ -30,7 +32,7 @@ class Application
 
   def play_part
     # Ici on joue une partie entière
-      game = Game.new
+      game = Game.new(@joueur1, @joueur2)
   end
 
   def ask_replay

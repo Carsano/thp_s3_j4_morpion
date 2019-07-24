@@ -2,6 +2,6 @@ class Player
 
   def initialize(name, symbol)
     @name = name
-    @symnol = symbol
+    @symbol = symbol
   end
 end

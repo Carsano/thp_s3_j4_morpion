@@ -2,9 +2,12 @@ class Game
 
   def initialize
     # initialize une nouvelle partie
-    @board = Board.new
+    @board = Board.new(j1,j2)
     @cases_availables = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
     @prompt = TTY::Prompt.new
+    @j1 = j1
+    @j2 = j2
+    @active_player = @j1
   end
 
   def verify_endgame
@@ -20,7 +23,7 @@ class Game
   def place_value
     choice = @prompt.select("Choose your destiny?", @cases_availables) 
     @cases_availables.delete(choice)
-    transform_choice(choice)
+    @board.change_value_case(transform_choice(choice), @active_player.symbol)
   end
 
   def transform_choice(choice)
@@ -34,6 +37,14 @@ class Game
     when "C1" then return 6
     when "C2" then return 7
     when "C3" then return 8
+    end
+  end
+
+  def change_active_player
+    if @active_player == @j1
+      @active_player = @j2
+      else
+        @active_player = @j1
     end
   end
 end
