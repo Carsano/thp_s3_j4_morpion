@@ -32,10 +32,11 @@ class Application
     # Ici on joue une partie entière
     @game = Game.new(@joueur1, @joueur2)
     end_game = @game.verify_endgame
-    # until end_game
-
-    #   end_game = @game.verify_endgame 
-    # end
+    until end_game
+      puts "#{@game.active_player}, à vous de jouer" 
+      @game.place_value
+      end_game = @game.verify_endgame 
+    end
   end
 
   def ask_replay

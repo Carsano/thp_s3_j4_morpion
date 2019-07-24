@@ -22,9 +22,10 @@ class Game
   end
 
   def place_value
-    choice = @prompt.select("Choose your destiny?", @cases_availables) 
+    choice = @prompt.select("Placez votre pion", @cases_availables) 
     @cases_availables.delete(choice)
     @board.change_value_case(transform_choice(choice), @active_player.symbol)
+    change_active_player
   end
 
   def transform_choice(choice)
