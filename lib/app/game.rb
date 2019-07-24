@@ -4,7 +4,7 @@ class Game
   def initialize(j1,j2)
     # initialize une nouvelle partie
     @board = Board.new
-    @cases_availables = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3"]
+    @cases_availables = ["A1", "A2", "A3", "B1", "B2", "B3", "C1", "C2", "C3", "QUITTER LA PARTIE"]
     @prompt = TTY::Prompt.new
     @j1 = j1
     @j2 = j2
@@ -13,7 +13,7 @@ class Game
 
   def verify_endgame
     # On va vérifier si 3 pions sont alignés
-    if @board.verif_alignement_points or @board.nb_coups_joues == 9
+    if @board.verif_alignement_points or @board.nb_coups_joues == 9 or @board.aborted 
       true
     else
       false
@@ -39,6 +39,8 @@ class Game
     when "C1" then return 6
     when "C2" then return 7
     when "C3" then return 8
+    else
+      @board.ending_play 
     end
   end
 

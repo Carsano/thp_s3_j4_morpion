@@ -1,6 +1,6 @@
 class Board
 
-  attr_reader :cases, :nb_coups_joues
+  attr_reader :cases, :nb_coups_joues, :aborted
   def initialize
     # Ici on initialise un plateau
     a1=BoardCase.new(1) 
@@ -14,13 +14,21 @@ class Board
     c3=BoardCase.new(9)  
     @cases = [a1, a2, a3, b1, b2, b3, c1, c2, c3]
     @nb_coups_joues = 0
+    @aborted = false
   end
 
   def change_value_case(bcase, value)
+    begin
     @cases[bcase].change_content(value)
     add_coup
+    rescue
+      ending_play
+    end
   end
-
+  
+  def ending_play
+    @aborted = true
+  end
   def add_coup
     @nb_coups_joues += 1
   end

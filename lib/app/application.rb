@@ -40,6 +40,7 @@ class Application
       play_game
       replay = ask_replay
     end
+    puts "Ciao !"
 
   end
 
@@ -67,7 +68,10 @@ class Application
   end
 
   def end_of_the_game
-    if @game.board.nb_coups_joues == 9
+    if @game.board.aborted == true
+      puts "Ciao !"
+      exit
+    elsif @game.board.nb_coups_joues == 9
       puts "Match nul"
       @game.j1.even
       @game.j2.even
@@ -76,7 +80,6 @@ class Application
       @game.change_active_player
       @game.active_player.win
       puts "#{@game.active_player.name} remporte la partie"
-
     end
 
   end
