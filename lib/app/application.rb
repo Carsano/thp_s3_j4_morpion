@@ -4,6 +4,7 @@ class Application
   def initialize
     @prompt = TTY::Prompt.new
     @replay = true
+    @retour_menu = true
     welcome
     ask_name
 
@@ -38,9 +39,12 @@ class Application
     # On joue à l'infini
     @replay = true
     while @replay
+      @retour_menu = true
       system "clear"
       play_game
+      while @retour_menu 
       menu
+      end
     end
     puts "Ciao !"
 
@@ -97,9 +101,15 @@ class Application
   def menu
     choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Quitter"], cycle: true)
     case choice
-    when "Voir les stats" then shows_statistics
-    when "Quitter" then @replay = false
+    when "Voir les stats" 
+      system "clear"
+      shows_statistics
+      @prompt.keypress("Appuie sur une touche pour continuer")
+      @retour_menu = true
+    when "Quitter"
+      @replay = false
     else
+      @retour_menu = false
     end
   end
 end

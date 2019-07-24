@@ -19,11 +19,11 @@ class Show
 
   def show_stats_players
     rows_stats = [
-      ["Name","#{@game.j1.show_stats_players.values[0]}", "#{@game.j2.show_stats_players.values[0]}"],
-      ["Nb played","#{@game.j1.show_stats_players.values[1]}", "#{@game.j2.show_stats_players.values[1]}"],
-      ["Wins","#{@game.j1.show_stats_players.values[2]}", "#{@game.j2.show_stats_players.values[2]}"],
-      ["Loss","#{@game.j1.show_stats_players.values[3]}", "#{@game.j2.show_stats_players.values[3]}"],
-      ["Even","#{@game.j1.show_stats_players.values[4]}", "#{@game.j2.show_stats_players.values[4]}"]
+      ["Name","#{@game.j1.show_states.values[0]}", "#{@game.j2.show_states.values[0]}"],
+      ["Nb played","#{@game.j1.show_states.values[1]}", "#{@game.j2.show_states.values[1]}"],
+      ["Wins","#{@game.j1.show_states.values[2]}", "#{@game.j2.show_states.values[2]}"],
+      ["Loss","#{@game.j1.show_states.values[3]}", "#{@game.j2.show_states.values[3]}"],
+      ["Even","#{@game.j1.show_states.values[4]}", "#{@game.j2.show_states.values[4]}"]
     ]
     stats = Terminal::Table.new :title => "Stats", :headings => ['Parameters', "#{@game.j1.name}", "#{@game.j2.name}"], :rows => rows_stats
   end
