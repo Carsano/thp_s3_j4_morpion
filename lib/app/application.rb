@@ -63,7 +63,7 @@ class Application
   end
 
   def show_table
-    show = Show.new(@game.board)
+    show = Show.new(@game)
     puts show.show_board
 
   end
