@@ -31,6 +31,12 @@ class Application
   def play_part
     # Ici on joue une partie entière
       @game = Game.new(@joueur1, @joueur2)
+      end_game = @game.verify_endgame
+      binding.pry
+      unless end_game
+        
+        end_game = @game.verify_endgame 
+      end
   end
 
   def ask_replay

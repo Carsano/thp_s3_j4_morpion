@@ -13,7 +13,7 @@ class Game
 
   def verify_endgame
     # On va vérifier si 3 pions sont alignés
-    if @board.verif_alignement_points or @board.nb_coups_joues >= 9
+    if @board.verif_alignement_points or @board.nb_coups_joues == 9
       true
     else
       false
