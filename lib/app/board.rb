@@ -12,7 +12,7 @@ class Board
     c1=BoardCase.new(7) 
     c2=BoardCase.new(8) 
     c3=BoardCase.new(9)  
-    @cases = [a1, a2,a3, b1,b2, b3,c1 , c2,c3]
+    @cases = [a1, a2, a3, b1, b2, b3, c1, c2, c3]
     @nb_coups_joues = 0
   end
 
