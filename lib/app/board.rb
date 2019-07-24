@@ -1,6 +1,6 @@
 class Board
 
-  attr_accessor :cases
+  attr_reader :cases, :nb_coups_joues
   def initialize
     # Ici on initialise un plateau
     a1=BoardCase.new(1) 
@@ -22,7 +22,7 @@ class Board
 
   def verif_alignement_points
     if verif_lines or verif_columns or verif_diagos
-      return true
+      true
     else
       false
     end
