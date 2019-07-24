@@ -9,4 +9,5 @@ require 'app/boardcase'
 require 'app/application'
 require 'views/show'
 
-binding.pry
+app = Application.new
+app.play_app

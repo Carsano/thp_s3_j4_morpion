@@ -4,9 +4,6 @@ class Application
   def initialize
     ask_name
     @prompt = TTY::Prompt.new
-    play_game
-
-
   end
 
   def ask_name
@@ -22,6 +19,7 @@ class Application
     # On joue à l'infini
     replay = true
     while replay
+      system "clear"
       play_game
       replay = ask_replay
     end
