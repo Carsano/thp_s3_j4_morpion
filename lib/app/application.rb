@@ -105,9 +105,11 @@ class Application
       system "clear"
       shows_statistics
       @prompt.keypress("Appuie sur une touche pour continuer")
+      system "clear"
       @retour_menu = true
     when "Quitter"
       @replay = false
+      @retour_menu = false
     else
       @retour_menu = false
     end
