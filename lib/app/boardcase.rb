@@ -5,4 +5,8 @@ class BoardCase
     @position = position
     @content = ""
   end
+
+  def change_content(value)
+    @content = value
+  end
 end

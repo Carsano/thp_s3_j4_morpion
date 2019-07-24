@@ -61,7 +61,6 @@ class Board
     else
       return false 
     end
-
   end
 
 
