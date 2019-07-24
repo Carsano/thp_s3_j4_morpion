@@ -21,10 +21,12 @@ class Board
   end
 
   def verif_alignement_points
-    verif_lines
-    verif_columns
+    if verif_lines or verif_columns or verif_diagos
+      return true
+    else
+      false
+    end
   end
-
   def verif_lines
     # verif lignes
     if @cases.values[0] != "" and [@cases.values[0], @cases.values[1], @cases.values[2]] == [@cases.values[0], @cases.values[0], @cases.values[0]]
@@ -52,6 +54,13 @@ class Board
   end
 
   def verif_diagos
+    if @cases.values[0] != "" and [@cases.values[0], @cases.values[4], @cases.values[8]] == [@cases.values[0], @cases.values[0], @cases.values[0]]
+      return true
+    elsif @cases.values[2] != "" and [@cases.values[2], @cases.values[4], @cases.values[6]] == [@cases.values[2], @cases.values[2], @cases.values[2]]
+      return true
+    else
+      return false 
+    end
 
   end
 
