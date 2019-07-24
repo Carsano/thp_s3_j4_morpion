@@ -46,9 +46,14 @@ class Application
   def end_of_the_game
     if @game.board.nb_coups_joues == 9
       puts "Match nul"
+      @game.j1.even
+      @game.j2.even
     else
+      @game.active_player.lose
       @game.change_active_player
+      @game.active_player.win
       puts "#{@game.active_player.name} remporte la partie"
+
     end
 
   end
