@@ -110,9 +110,9 @@ class Application
   def play_game
     # Ici on joue une partie entière
     if @last_loser
-      @game = Game.new(@joueur1, @joueur2)
-    else
       @game = Game.new(@joueur1, @joueur2, @last_loser)
+    else
+      @game = Game.new(@joueur1, @joueur2)
     end
     @all_players = [@game.j1, @game.j2] 
     end_game = @game.verify_endgame
