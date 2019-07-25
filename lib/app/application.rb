@@ -7,6 +7,7 @@ class Application
     @retour_menu = true
     welcome
     ask_name
+    @all_players = Array.new
 
   end
 
@@ -32,10 +33,9 @@ class Application
     puts '-'*50
     print "Veuillez rentrer le nom du joueur1\n> "
     name1 = gets.chomp.colorize(:blue)
-    @joueur1 = Player.new(name1,"x".colorize(:blue))
     print "Veuillez rentrer le nom du joueur2\n> "
     name2 = gets.chomp.colorize(:yellow)
-    @joueur2 = Player.new(name2, "o".colorize(:yellow))
+        @all_players =[@joueur1 = Player.new(name1,"x".colorize(:blue)),@joueur2 = Player.new(name2, "o".colorize(:yellow))]
   end
 
   def play_app
