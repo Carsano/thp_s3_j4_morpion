@@ -8,7 +8,6 @@ class Application
     welcome
     ask_name
     @all_players = Array.new
-
   end
 
   def welcome
@@ -26,7 +25,6 @@ class Application
     puts "Que dit Wikipédia ? : "
     puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)".fit(50)
     @prompt.keypress("Appuie sur une touche pour continuer")
-
   end
 
   def ask_name
