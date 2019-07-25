@@ -12,14 +12,17 @@ class Application
 
   def welcome
     system "clear"
+    t = Time.now
     puts ("#"*50).colorize(:blue)
     puts ("#" + "MORPION QUI DECHIRE".center(48) + "#").colorize(:blue)
+    puts ("#" + " "*48 + "#").colorize(:blue)
+    puts ("#" + "VERSION FINALE".center(48) + "#").colorize(:blue)
+    puts ("#" + " "*48 + "#").colorize(:blue)
+    puts ("#" + "#{t.httpdate}".center(48) + "#").colorize(:blue)
     puts ("#"*50).colorize(:blue)
-    5.times do
-      puts ""
-    end 
-    puts "Bienvenu dans ce jeu de morpion designé par votre serviteur Carsano"
-    puts "Que dit Wikipédia : "
+    puts ""
+    puts "Bienvenue dans ce jeu de morpion designé par votre serviteur Carsano"
+    puts "Que dit Wikipédia ? : "
     puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)"
     @prompt.keypress("Appuie sur une touche pour continuer")
 
