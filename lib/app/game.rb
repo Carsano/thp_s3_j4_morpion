@@ -21,10 +21,10 @@ class Game
   end
 
   def place_value # On place la value
-    choice = @prompt.select("#{@active_player.name} (#{@active_player.symbol}), à vous de jouer : ", @cases_availables, cycle: true) 
-    @cases_availables.delete(choice)
-    @board.change_value_case(transform_choice(choice), @active_player.symbol)
-    change_active_player
+    choice = @prompt.select("#{@active_player.name} (#{@active_player.symbol}), à vous de jouer : ", @cases_availables, cycle: true) # On choisit parmi la liste des choix disponibles
+    @cases_availables.delete(choice) # On supprime de la liste le choix de l'utilisateur
+    @board.change_value_case(transform_choice(choice), @active_player.symbol) # On applique au boardcase correspondant la bonne valeur
+    change_active_player # On change de joueur
   end
 
   def transform_choice(choice)
@@ -43,7 +43,7 @@ class Game
     end
   end
 
-  def change_active_player
+  def change_active_player # Changement de joueur
     if @active_player == @j1
       @active_player = @j2
     else
