@@ -10,7 +10,7 @@ class Player
     @nb_plays = nb_plays
   end
 
-  def to_json
+  def to_json # Méthode pour transformer en json
     {
       "First name" => @name,
       "Number of game played" => @nb_plays,
@@ -19,7 +19,9 @@ class Player
       "Even" => @nb_even
     }.to_json
   end
-  def win
+
+  # Ajout des stats
+  def win 
     @nb_win += 1
     add_plays
   end
@@ -38,6 +40,7 @@ class Player
     @nb_plays += 1
   end
 
+  # Montre les stats
   def show_states 
     {
       "First name" => @name,
