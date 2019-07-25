@@ -39,28 +39,28 @@ class Application
       puts player
     end
     json_file.close
+    system "clear"
   end
 
   def load_saving
     @all_players = []
     json_file = File.open("db/saves.json","r")
     i = 0
-    binding.pry
     json_file.readlines.each do |line|
-    binding.pry
       @all_players[i] = line
       i += 1
     end
     @joueur1 = @all_players[0]
     @joueur2 = @all_players[1]
     json_file.close
+    recover_players
   end
 
   def recover_players
     @joueur1 = JSON.parse(@joueur1)
     @joueur2 = JSON.parse(@joueur2)
-    @joueur1 = Player.new(@joueur1.values[0], "x", @joueur1.values[1], @joueur1.values[2], @joueur1.values[3], @joueur1[4])
-    @joueur2 = Player.new(@joueur2.values[0], "0", @joueur2.values[1], @joueur2.values[2], @joueur2.values[3], @joueur2[4])
+    @joueur1 = Player.new(@joueur1.values[0], "x".colorize(:blue), @joueur1.values[1], @joueur1.values[2], @joueur1.values[3], @joueur1[4])
+    @joueur2 = Player.new(@joueur2.values[0], "o".colorize(:yellow), @joueur2.values[1], @joueur2.values[2], @joueur2.values[3], @joueur2[4])
   end
 
   def ask_name
