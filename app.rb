@@ -1,6 +1,7 @@
 require 'bundler'
 require 'colorize'
 require 'word_wrap/core_ext'
+require 'json'
 Bundler.require
 
 $:.unshift File.expand_path("./../lib", __FILE__)

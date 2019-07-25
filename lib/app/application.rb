@@ -1,13 +1,13 @@
 class Application
 
-  attr_reader :game
+  attr_reader :game, :all_players
   def initialize
     @prompt = TTY::Prompt.new
     @replay = true
     @retour_menu = true
     welcome
     ask_name
-    @all_players = Array.new
+    @all_players = []
   end
 
   def welcome
@@ -27,13 +27,24 @@ class Application
     @prompt.keypress("Appuie sur une touche pour continuer")
   end
 
+  def saving_players
+    json_file = File.open("db/saves.json","w")
+    @all_players.each do |player|
+      json_file.puts player.to_json
+      puts player
+    end
+    json_file.close
+  end
+
   def ask_name
     puts '-'*50
+
     print "Veuillez rentrer le nom du joueur1\n> "
     name1 = gets.chomp.colorize(:blue)
+    @joueur1 = Player.new(name1,"x".colorize(:blue))
     print "Veuillez rentrer le nom du joueur2\n> "
     name2 = gets.chomp.colorize(:yellow)
-        @all_players =[@joueur1 = Player.new(name1,"x".colorize(:blue)),@joueur2 = Player.new(name2, "o".colorize(:yellow))]
+    @joueur2 = Player.new(name2, "o".colorize(:yellow))
   end
 
   def play_app
@@ -53,6 +64,7 @@ class Application
   def play_game
     # Ici on joue une partie entière
     @game = Game.new(@joueur1, @joueur2)
+    @all_players = [@game.j1, @game.j2] 
     end_game = @game.verify_endgame
     show_table
     until end_game
@@ -99,7 +111,7 @@ class Application
   end
 
   def menu
-    choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Quitter"], cycle: true)
+    choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Sauvegarder les stats", "Quitter"], cycle: true)
     case choice
     when "Voir les stats" 
       system "clear"
@@ -110,6 +122,9 @@ class Application
     when "Quitter"
       @replay = false
       @retour_menu = false
+    when "Sauvegarder les stats"
+      saving_players
+      @retour_menu = true
     else
       @retour_menu = false
     end

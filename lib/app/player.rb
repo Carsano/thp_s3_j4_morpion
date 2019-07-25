@@ -10,6 +10,15 @@ class Player
     @nb_plays = 0
   end
 
+  def to_json
+    {
+      "First name" => @name,
+      "Number of game played" => @nb_plays,
+      "Wins" => @nb_win,
+      "Loss" => @nb_lose,
+      "Even" => @nb_even
+    }.to_json
+  end
   def win
     @nb_win += 1
     add_plays
