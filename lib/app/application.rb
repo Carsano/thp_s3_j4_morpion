@@ -33,33 +33,33 @@ class Application
   end
 
   def saving_players
+    system "clear"
     if File.exist?("db/saves.json")
       json_file = File.open("db/saves.json","w")
     else
       json_file = File.new("db/saves.json","w")
-
     end
     @all_players.each do |player|
       json_file.puts player.to_json
       puts player
     end
     json_file.close
-    system "clear"
+    puts "Stats sauvegardées"
   end
 
   def load_saving
     if File.exist?("db/saves.json")
-    @all_players = []
-    json_file = File.open("db/saves.json","r")
-    i = 0
-    json_file.readlines.each do |line|
-      @all_players[i] = line
-      i += 1
-    end
-    @joueur1 = @all_players[0]
-    @joueur2 = @all_players[1]
-    json_file.close
-    recover_players
+      @all_players = []
+      json_file = File.open("db/saves.json","r")
+      i = 0
+      json_file.readlines.each do |line|
+        @all_players[i] = line
+        i += 1
+      end
+      @joueur1 = @all_players[0]
+      @joueur2 = @all_players[1]
+      json_file.close
+      recover_players
     else
       puts "Aucune sauvegarde n'existe"
       ask_name
@@ -67,7 +67,13 @@ class Application
   end
 
   def delete_load
-    File.delete("db/saves.json")
+    system "clear"
+    if File.exist?("db/saves.json")
+      File.delete("db/saves.json")
+      puts "Sauvegarde supprimée"
+    else
+      puts "Aucune sauvegarde à supprimer"
+    end
   end
 
   def recover_players
@@ -75,11 +81,11 @@ class Application
     @joueur2 = JSON.parse(@joueur2)
     @joueur1 = Player.new(@joueur1.values[0], "x".colorize(:blue), @joueur1.values[1], @joueur1.values[2], @joueur1.values[3], @joueur1[4])
     @joueur2 = Player.new(@joueur2.values[0], "o".colorize(:yellow), @joueur2.values[1], @joueur2.values[2], @joueur2.values[3], @joueur2[4])
+    system "clear"
   end
 
   def ask_name
     puts '-'*50
-
     print "Veuillez rentrer le nom du joueur1\n> "
     name1 = gets.chomp.colorize(:blue)
     @joueur1 = Player.new(name1,"x".colorize(:blue))
@@ -99,6 +105,7 @@ class Application
         menu
       end
     end
+    system "clear"
     puts "Ciao !"
   end
 
@@ -127,6 +134,7 @@ class Application
 
   def end_of_the_game
     if @game.board.aborted == true
+      system 'clear'
       puts "Ciao !"
       exit
     elsif @game.board.nb_coups_joues == 9
