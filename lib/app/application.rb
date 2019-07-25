@@ -111,7 +111,7 @@ class Application
 
   def play_game
     # Ici on joue une partie entière
-      @game = Game.new(@joueur1, @joueur2, @last_loser)
+    @game = Game.new(@joueur1, @joueur2, @last_loser)
     @all_players = [@game.j1, @game.j2] 
     end_game = @game.verify_endgame
     show_table
