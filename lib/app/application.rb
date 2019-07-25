@@ -79,6 +79,7 @@ class Application
     @joueur2 = JSON.parse(@joueur2)
     @joueur1 = Player.new(@joueur1.values[0], "x".colorize(:blue), @joueur1.values[1], @joueur1.values[2], @joueur1.values[3], @joueur1[4])
     @joueur2 = Player.new(@joueur2.values[0], "o".colorize(:yellow), @joueur2.values[1], @joueur2.values[2], @joueur2.values[3], @joueur2[4])
+    @last_loser = [@joueur1, @joueur2].sample
     system "clear"
   end
 
@@ -90,6 +91,7 @@ class Application
     print "Veuillez rentrer le nom du joueur2\n> "
     name2 = gets.chomp.colorize(:yellow)
     @joueur2 = Player.new(name2, "o".colorize(:yellow))
+    @last_loser = [@joueur1, @joueur2].sample
   end
 
   def play_app
@@ -109,11 +111,7 @@ class Application
 
   def play_game
     # Ici on joue une partie entière
-    if @last_loser
       @game = Game.new(@joueur1, @joueur2, @last_loser)
-    else
-      @game = Game.new(@joueur1, @joueur2)
-    end
     @all_players = [@game.j1, @game.j2] 
     end_game = @game.verify_endgame
     show_table
@@ -142,6 +140,7 @@ class Application
       puts "Match nul"
       @game.j1.even # On ajoute une stat à chaque joueur
       @game.j2.even
+      @last_loser = [@game.j1, @game.j2].sample
     else
       @last_loser = @game.active_player # On initialize un last loser
       @game.active_player.lose # On ajoute les stats
