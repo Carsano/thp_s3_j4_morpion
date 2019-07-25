@@ -1,12 +1,12 @@
 class Application
 
-  attr_reader :game, :all_players
+  attr_reader :game, :all_players, :joueur1, :joueur2
   def initialize
     @prompt = TTY::Prompt.new
     @replay = true
     @retour_menu = true
     welcome
-    ask_name
+    choice_load
     @all_players = []
   end
 
@@ -27,6 +27,11 @@ class Application
     @prompt.keypress("Appuie sur une touche pour continuer")
   end
 
+  def choice_load
+@prompt.select("Voulez-vous charger votre dernière partie sauvegardée?", %w(Oui Non), cycle: true) == "Oui" ? load_saving : ask_name
+
+  end
+
   def saving_players
     json_file = File.open("db/saves.json","w")
     @all_players.each do |player|
@@ -34,6 +39,28 @@ class Application
       puts player
     end
     json_file.close
+  end
+
+  def load_saving
+    @all_players = []
+    json_file = File.open("db/saves.json","r")
+    i = 0
+    binding.pry
+    json_file.readlines.each do |line|
+    binding.pry
+      @all_players[i] = line
+      i += 1
+    end
+    @joueur1 = @all_players[0]
+    @joueur2 = @all_players[1]
+    json_file.close
+  end
+
+  def recover_players
+    @joueur1 = JSON.parse(@joueur1)
+    @joueur2 = JSON.parse(@joueur2)
+    @joueur1 = Player.new(@joueur1.values[0], "x", @joueur1.values[1], @joueur1.values[2], @joueur1.values[3], @joueur1[4])
+    @joueur2 = Player.new(@joueur2.values[0], "0", @joueur2.values[1], @joueur2.values[2], @joueur2.values[3], @joueur2[4])
   end
 
   def ask_name

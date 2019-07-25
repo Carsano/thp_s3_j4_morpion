@@ -13,4 +13,5 @@ require 'app/application'
 require 'views/show'
 
 app = Application.new
+binding.pry
 app.play_app

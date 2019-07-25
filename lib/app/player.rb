@@ -1,13 +1,13 @@
 class Player
 
   attr_reader :name, :symbol
-  def initialize(name, symbol)
+  def initialize(name, symbol,nb_plays = 0, nb_win=0, nb_lose=0, nb_even=0 )
     @name = name
     @symbol = symbol
-    @nb_win = 0
-    @nb_lose = 0
-    @nb_even = 0
-    @nb_plays = 0
+    @nb_win = nb_win
+    @nb_lose = nb_lose
+    @nb_even = nb_even
+    @nb_plays = nb_plays
   end
 
   def to_json
