@@ -21,7 +21,7 @@ class Show
       ["Loss","#{@game.j1.show_states.values[3]}", "#{@game.j2.show_states.values[3]}"],
       ["Even","#{@game.j1.show_states.values[4]}", "#{@game.j2.show_states.values[4]}"]
     ]
-    stats = Terminal::Table.new :title => "Stats", :headings => ['Parameters', "#{@game.j1.name}", "#{@game.j2.name}"], :rows => rows_stats
+    stats = Terminal::Table.new :title => "Stats", :headings => ['Parameters', "#{@game.j1.name}", "#{@game.j2.name}"], :rows => rows_stats, :style => {:alignment => :center, :width => 40}
   end
 end
 
