@@ -47,7 +47,6 @@ class Application
       end
     end
     puts "Ciao !"
-    system "clear"
   end
 
   def play_game
@@ -84,7 +83,7 @@ class Application
       @game.active_player.lose
       @game.change_active_player
       @game.active_player.win
-      puts "#{@game.active_player.name} remporte la partie"
+      puts "#{@game.active_player.name} remporte la partie !"
     end
 
   end
