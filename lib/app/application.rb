@@ -28,12 +28,17 @@ class Application
   end
 
   def choice_load
-@prompt.select("Voulez-vous charger votre dernière partie sauvegardée?", %w(Oui Non), cycle: true) == "Oui" ? load_saving : ask_name
+    @prompt.select("Voulez-vous charger votre dernière partie sauvegardée?", %w(Oui Non), cycle: true) == "Oui" ? load_saving : ask_name
 
   end
 
   def saving_players
-    json_file = File.open("db/saves.json","w")
+    if File.exist?("db/saves.json")
+      json_file = File.open("db/saves.json","w")
+    else
+      json_file = File.new("db/saves.json","w")
+
+    end
     @all_players.each do |player|
       json_file.puts player.to_json
       puts player
@@ -43,6 +48,7 @@ class Application
   end
 
   def load_saving
+    if File.exist?("db/saves.json")
     @all_players = []
     json_file = File.open("db/saves.json","r")
     i = 0
@@ -54,6 +60,14 @@ class Application
     @joueur2 = @all_players[1]
     json_file.close
     recover_players
+    else
+      puts "Aucune sauvegarde n'existe"
+      ask_name
+    end
+  end
+
+  def delete_load
+    File.delete("db/saves.json")
   end
 
   def recover_players
@@ -138,7 +152,7 @@ class Application
   end
 
   def menu
-    choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Sauvegarder les stats", "Quitter"], cycle: true)
+    choice = @prompt.select('MENU', ["Voir les stats", "Rejouer", "Sauvegarder les stats", "Supprimer la sauvegarde", "Quitter"], cycle: true)
     case choice
     when "Voir les stats" 
       system "clear"
@@ -151,6 +165,9 @@ class Application
       @retour_menu = false
     when "Sauvegarder les stats"
       saving_players
+      @retour_menu = true
+    when "Supprimer la sauvegarde"
+      delete_load
       @retour_menu = true
     else
       @retour_menu = false
