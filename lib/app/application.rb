@@ -21,9 +21,9 @@ class Application
     puts ("#" + "#{t.httpdate}".center(48) + "#").colorize(:blue)
     puts ("#"*50).colorize(:blue)
     puts ""
-    puts "Bienvenue dans ce jeu de morpion designé par votre serviteur Carsano"
+    puts "Bienvenue dans ce jeu de morpion designé par votre serviteur Carsano".fit(50)
     puts "Que dit Wikipédia ? : "
-    puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)"
+    puts "Le morpion est un jeu de réflexion se pratiquant à deux joueurs au tour par tour et dont le but est de créer le premier un alignement sur une grille (3x3)".fit(50)
     @prompt.keypress("Appuie sur une touche pour continuer")
 
   end
@@ -86,7 +86,7 @@ class Application
       @game.active_player.lose
       @game.change_active_player
       @game.active_player.win
-      puts "#{@game.active_player.name} remporte la partie !"
+      puts "   ".colorize(:yellow) + " #{@game.active_player.name} remporte la partie !"+ "     ".colorize(:yellow)
     end
 
   end
