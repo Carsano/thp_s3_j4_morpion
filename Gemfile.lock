@@ -42,6 +42,7 @@ GEM
     tty-screen (0.7.0)
     unicode-display_width (1.6.0)
     wisper (2.0.0)
+    word_wrap (1.0.0)
 
 PLATFORMS
   ruby
@@ -53,6 +54,7 @@ DEPENDENCIES
   rspec
   terminal-table
   tty-prompt
+  word_wrap
 
 RUBY VERSION
    ruby 2.5.1p57

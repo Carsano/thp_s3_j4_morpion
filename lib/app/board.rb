@@ -59,10 +59,10 @@ class Board
 
   def verif_columns
     if @cases[0].content != " " and [@cases[0].content, @cases[3].content, @cases[6].content] == [@cases[0].content, @cases[0].content, @cases[0].content]
-      @hash_colorize["c1"] = true
+      colorize_win(@cases[0], @cases[3], @cases[6])
       return true
     elsif @cases[1].content != " " and [@cases[1].content, @cases[4].content, @cases[7].content] == [@cases[1].content, @cases[1].content, @cases[1].content]
-      @hash_colorize["c2"] = true
+      colorize_win(@cases[1], @cases[4], @cases[7])
       return true
     elsif @cases[2].content != " " and [@cases[2].content, @cases[5].content, @cases[8].content] == [@cases[2].content, @cases[2].content, @cases[2].content]
       colorize_win(@cases[2], @cases[5], @cases[8])
