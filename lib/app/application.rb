@@ -109,7 +109,11 @@ class Application
 
   def play_game
     # Ici on joue une partie entière
-    @game = Game.new(@joueur1, @joueur2)
+    if @last_loser
+      @game = Game.new(@joueur1, @joueur2)
+    else
+      @game = Game.new(@joueur1, @joueur2, @last_loser)
+    end
     @all_players = [@game.j1, @game.j2] 
     end_game = @game.verify_endgame
     show_table
@@ -139,6 +143,7 @@ class Application
       @game.j1.even # On ajoute une stat à chaque joueur
       @game.j2.even
     else
+      @last_loser = @game.active_player # On initialize un last loser
       @game.active_player.lose # On ajoute les stats
       @game.change_active_player
       @game.active_player.win
