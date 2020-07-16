@@ -3,7 +3,7 @@
 Pour lancer le jeu, veuillez lancer le `app.rb`
 ## Règles du jeu
 
-Elles sont affichées au lancement (grosse flemme)
+Elles sont affichées au lancement.
 
 ## Déroulement du jeu
 
